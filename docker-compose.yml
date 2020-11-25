@@ -44,6 +44,17 @@ services:
           # The command cp -t used below does not work without coreutils
         - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=apk add coreutils --no-cache
 
+  builder-gradle6.7.0-jdk8-hotspot:
+    image: marcellodesales/unmazedboot-builder-gradle:6.7.0-jdk8-hotspot${UNMAZEDBOOT_BUILDER_GRADLE_VERSION}
+    build:
+      context: builder
+      dockerfile: gradle.Dockerfile
+      args:
+        - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=gradle:6.7.0-jdk8-hotspot
+          # https://github.com/passbolt/passbolt_docker/issues/75#issuecomment-439629647
+          # The command cp -t used below does not work without coreutils
+        - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=echo none
+
   builder-maven3.6.0-jdk8-slim:
     image: intuit/unmazedboot-builder-maven:3.6.0-jdk8-slim${UNMAZEDBOOT_BUILDER_MAVEN_VERSION}
     build:
