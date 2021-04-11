@@ -7,7 +7,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.4.4")
     }
 }
 
@@ -17,6 +17,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 apply from: 'src/gradle/jar.gradle'
+apply from: 'src/gradle/build-info.gradle'
 apply from: 'src/gradle/processResources.gradle'
 
 repositories {
@@ -27,6 +28,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }

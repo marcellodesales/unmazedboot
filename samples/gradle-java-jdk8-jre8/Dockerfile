@@ -10,10 +10,12 @@ ARG UNMAZEDBOOT_BUILDER_GRADLE_VERSION=${UNMAZEDBOOT_BUILDER_GRADLE_VERSION:--la
 ARG UNMAZEDBOOT_RUNNER_PORT="8080"
 ARG UNMAZEDBOOT_RUNNER_VERSION=${UNMAZEDBOOT_RUNNER_VERSION:--latest}
 
+ARG UNMAZEDBOOT_SAMPLE_BUILDER_IMAGE=${UNMAZEDBOOT_SAMPLE_BUILDER_IMAGE}
+
 # #####################################################################
 # Build stage for building the target directory before running tests
 # #####################################################################
-FROM intuit/unmazedboot-builder-gradle:4.10.2-jdk8-alpine${UNMAZEDBOOT_BUILDER_GRADLE_VERSION} as unmazedboot-builder-artifacts
+FROM ${UNMAZEDBOOT_SAMPLE_BUILDER_IMAGE} as unmazedboot-builder-artifacts
 
 # #####################################################################
 # Build stage for running the runtime image
