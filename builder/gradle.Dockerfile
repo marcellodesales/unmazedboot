@@ -44,8 +44,10 @@ ONBUILD ENV UNMAZEDBOOT_BUILDER_GIT_PIPELINE_URL=${UNMAZEDBOOT_BUILDER_GIT_PIPEL
 WORKDIR /app/
 
 # Copy the needed files to build a gradle project
-ONBUILD COPY ./build.gradle build.gradle
-ONBUILD COPY ./settings.gradle settings.gradle
+ONBUILD COPY ./build.gradle .
+ONBUILD COPY ./settings.gradle .
+# https://stackoverflow.com/questions/31528384/conditional-copy-add-in-dockerfile/65138098#65138098
+ONBUILD COPY *gradle.properties .
 ONBUILD COPY ./src src/
 
 ONBUILD RUN echo "Executing UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD='${UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD}'"
