@@ -4,13 +4,13 @@ services:
 
 ############# Builder JDK 8
 
-  builder-gradle4.10.2-jdk8-slim:
-    image: intuit/unmazedboot-builder-gradle:4.10.2-jdk8-slim${UNMAZEDBOOT_BUILDER_GRADLE_VERSION}
+  builder-gradle-6.7.0-jdk8-hotspot:
+    image: marcellodesales/unmazedboot-builder-gradle:6.7.0-jdk8-hotspot${UNMAZEDBOOT_BUILDER_GRADLE_VERSION}
     build:
       context: builder
       dockerfile: gradle.Dockerfile
       args:
-        - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=gradle:4.10.2-jdk8-slim
+        - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=gradle:6.7.0-jdk8-hotspot
         - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=echo none
 
   builder-gradle4.10.2-jdk8-alpine:
