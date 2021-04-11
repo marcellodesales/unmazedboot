@@ -42,6 +42,7 @@ WORKDIR /app/
 # Copy the needed files to build a gradle project
 ONBUILD COPY ./build.gradle build.gradle
 ONBUILD COPY ./settings.gradle settings.gradle
+ONBUILD COPY ./gradle.properties gradle.properties
 ONBUILD COPY ./src src/
 
 ONBUILD RUN echo "Executing UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD='${UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD}'"
