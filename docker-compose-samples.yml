@@ -1,18 +1,26 @@
 version: "3.7"
 
+networks:
+  unmazedboot-services:
+    driver: bridge
+
 services:
 
   sample-gradle-java-jre8:
-    image: intuit/unmazedboot-sample:jdk8-jre8-debian${UNMAZEDBOOT_RUNNER_VERSION}
+    image: marcellodesales/unmazedboot-sample:jre8${UNMAZEDBOOT_RUNNER_VERSION}
     build:
       context: samples/gradle-java-jdk8-jre8
       args:
+        - UNMAZEDBOOT_SAMPLE_BUILDER_IMAGE=marcellodesales/unmazedboot-builder-gradle:6.7.0-jdk8-hotspot${UNMAZEDBOOT_BUILDER_GRADLE_VERSION}
         - UNMAZEDBOOT_BUILDER_GRADLE_VERSION=${UNMAZEDBOOT_BUILDER_GRADLE_VERSION}
         - UNMAZEDBOOT_RUNNER_VERSION=${UNMAZEDBOOT_RUNNER_VERSION}
         - UNMAZEDBOOT_BUILDER_GIT_SHA=11110000
         - UNMAZEDBOOT_BUILDER_GIT_BRANCH=master
+        - UNMAZEDBOOT_BUILDER_GIT_PIPELINE_URL=${UNMAZEDBOOT_BUILDER_GIT_PIPELINE_URL:-GITHUB_PIPELINE_URL}
     environment:
       - RUNNER_DEBUG_ENV=true
+    networks:
+      - unmazedboot-services
     ports:
       - 8080:8080
 
