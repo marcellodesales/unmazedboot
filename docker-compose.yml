@@ -159,6 +159,23 @@ services:
         - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=openjdk:15-jdk-alpine3.12
         - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=echo none
 
+  linker-jdk16-alpine:
+    image: marcellodesales/unmazedboot-linker:jdk16-alpine${UNMAZEDBOOT_LINKER_VERSION}
+    build:
+      context: linker
+      args:
+        - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=openjdk:16-jdk-alpine3.12
+        - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=echo none
+
+  linker-jdk17-alpine:
+    image: marcellodesales/unmazedboot-linker:jdk17-alpine${UNMAZEDBOOT_LINKER_VERSION}
+    build:
+      context: linker
+      args:
+        - UNMAZEDBOOT_INTERNAL_BASE_IMAGE=openjdk:17-jdk-alpine3.12
+        - UNMAZEDBOOT_INTERNAL_DEPENDENCIES=echo none
+
+
   # https://github.com/docker-library/openjdk/issues/217#issuecomment-436275472
   # Debian generates large libjvm and can be decreased
   linker-jdk11-debian:
