@@ -47,7 +47,6 @@ WORKDIR /app/
 ONBUILD COPY ./build.gradle .
 ONBUILD COPY ./settings.gradle .
 # https://stackoverflow.com/questions/31528384/conditional-copy-add-in-dockerfile/65138098#65138098
-ONBUILD COPY *gradle.properties .
 ONBUILD COPY ./src src/
 
 ONBUILD RUN echo "Executing UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD='${UNMAZEDBOOT_BUILDER_GRADLE_BUILD_CMD}'"
